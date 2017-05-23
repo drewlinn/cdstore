@@ -1,17 +1,41 @@
 using System;
-using System.Collections.Generic;
 
 class Cd
 {
-  public string Title;
-  public string Artist;
-  public int Price;
+  private string _title;
+  private string _artist;
+  private int _price;
 
-  public Cd(string albumTitle, string albumArtist, int albumPrice = 10)
+  public void SetTitle(string newTitle)
   {
-    Title = albumTitle;
-    Artist = albumArtist;
-    Price = albumPrice;
+    _title = newTitle;
+  }
+  public string GetTitle()
+  {
+    return _title;
+  }
+
+  public void SetArtist(string newArtist)
+  {
+    _artist = newArtist;
+  }
+  public string GetArtist()
+  {
+    return _artist;
+  }
+
+  public void SetPrice(int newPrice)
+  {
+    if (newPrice >= 0) {
+    _price = newPrice;
+    }
+    else {
+    Console.WriteLine("The price for this item is not valid.");
+    }
+  }
+  public int GetPrice()
+  {
+    return _price;
   }
 }
 
@@ -19,20 +43,12 @@ public class Program
 {
   public static void Main()
   {
-    Cd firstCd = new Cd("Master of Reality", "Black Sabbath");
-    Cd secondCd = new Cd("Electric Ladyland", "Jimi Hendrix");
-    Cd thirdCd = new Cd("Nevermind", "Nirvana");
-    Cd fourthCd = new Cd("I Don't Get It", "Pork Lion", 50);
-
-    List<Cd> Cds = new List<Cd>() { firstCd, secondCd, thirdCd };
-
-    Cds.Add(fourthCd);
-
-    foreach (Cd album in Cds)
-    {
-      Console.WriteLine(album.Title);
-      Console.WriteLine("By " + album.Artist);
-      Console.WriteLine("Price: $" + album.Price);
-    }
+    Cd anotherCd = new Cd();
+    anotherCd.SetTitle("Rubber Soul");
+    anotherCd.SetArtist("The Beatles");
+    anotherCd.SetPrice(-10);
+    Console.WriteLine(anotherCd.GetTitle());
+    Console.WriteLine("By: " + anotherCd.GetArtist());
+    Console.WriteLine("Price: $" + anotherCd.GetPrice());
   }
 }
